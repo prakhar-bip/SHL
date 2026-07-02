@@ -11,6 +11,17 @@ def get_agent():
         _agent = ChatbotAgent()
     return _agent
 
+@router.get("/")
+def read_root():
+    return {
+        "message": "SHL Assessment Recommender API is running.",
+        "endpoints": {
+            "health": "GET /health",
+            "chat": "POST /chat",
+            "docs": "GET /docs"
+        }
+    }
+
 @router.get("/health")
 def health_check():
     return {"status": "ok"}

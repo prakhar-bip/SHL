@@ -2,14 +2,13 @@ import os
 import re
 import json
 import numpy as np
-from sentence_transformers import SentenceTransformer
-
 # Load model lazily
 _model = None
 
 def get_model():
     global _model
     if _model is None:
+        from sentence_transformers import SentenceTransformer
         # Load a small, fast model
         _model = SentenceTransformer("all-MiniLM-L6-v2")
     return _model
